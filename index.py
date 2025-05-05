@@ -1,4 +1,3 @@
-
 import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk
@@ -6,8 +5,8 @@ import os
 from datetime import datetime
 
 # Rutas y colores institucionales
-ARCHIVO = "/mnt/checker/CHECKER1.TXT"
-# ARCHIVO = r"\\192.168.40.250\trm_universal\CHECKER1.TXT"
+# ARCHIVO = "/mnt/checker/CHECKER1.TXT"
+ARCHIVO = r"\\192.168.40.250\trm_universal\CHECKER1.TXT"
 COLOR_AZUL = "#1e429f"
 COLOR_AMARILLO = "#fabc0b"
 COLOR_BLANCO = "#ffffff"
@@ -70,7 +69,8 @@ frame_header.pack(fill=tk.X)
 
 try:
     logo_img = Image.open("logo.png")
-    logo_img = logo_img.resize((100, 60), Image.Resampling.LANCZOS)
+    # logo_img = logo_img.resize((100, 60), Image.Resampling.LANCZOS)
+    logo_img = logo_img.resize((300, 180), Image.Resampling.LANCZOS)
     logo_photo = ImageTk.PhotoImage(logo_img)
     logo_label = tk.Label(frame_header, image=logo_photo, bg=COLOR_AZUL)
     logo_label.image = logo_photo
@@ -82,7 +82,17 @@ except Exception as e:
 frame_search = tk.Frame(root, bg=COLOR_FONDO)
 frame_search.pack(pady=20)
 
-icon_label = tk.Label(frame_search, text="🔍", font=("Arial", 18), bg=COLOR_FONDO)
+# icon_label = tk.Label(frame_search, text="🔍", font=("Arial", 18), bg=COLOR_FONDO)
+# icon_label.pack(side=tk.LEFT, padx=5)
+
+# Cargar la imagen
+lupa_img = Image.open("lupa.png")
+lupa_img = lupa_img.resize((24, 24), Image.Resampling.LANCZOS)
+lupa_photo = ImageTk.PhotoImage(lupa_img)
+
+# Crear la etiqueta con la imagen
+icon_label = tk.Label(frame_search, image=lupa_photo, bg=COLOR_FONDO)
+icon_label.image = lupa_photo  # Mantener una referencia para evitar que la imagen sea eliminada por el recolector de basura
 icon_label.pack(side=tk.LEFT, padx=5)
 
 entry_codigo = tk.Entry(frame_search, font=FONT_LG, width=25, justify="center")
