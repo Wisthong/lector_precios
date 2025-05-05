@@ -36,6 +36,10 @@ def cargar_productos():
             productos[codigo] = (item, nombre, precio)
     return productos
 
+def simular_enter():
+    # Llamar directamente a la función de búsqueda sin necesidad de presionar Enter
+    buscar_producto()
+    
 def buscar_producto(event=None):
     codigo = entry_codigo.get().strip()
     producto = productos.get(codigo)
@@ -52,6 +56,11 @@ def buscar_producto(event=None):
         label_precio_val.config(text="")
         root.after(5000, limpiar_campos)  # Limpieza más rápida para "no encontrado"
     entry_codigo.delete(0, tk.END)
+
+# Evento para escanear código de barras
+def on_scan_codigo(event):
+    # Asumiendo que el escáner de código de barras ya llena entry_codigo
+    simular_enter()  # Llamar a la función para simular la pulsación de Enter
 
 def limpiar_campos():
     label_nombre_val.config(text="")
