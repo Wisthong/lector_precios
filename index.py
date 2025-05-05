@@ -109,6 +109,16 @@ entry_codigo.pack(side=tk.LEFT, padx=10)
 entry_codigo.focus()
 entry_codigo.bind("<Return>", buscar_producto)
 
+def on_codigo_input(event):
+    if entry_codigo.get():
+        # Cancelar cualquier búsqueda anterior programada
+        if hasattr(root, "after_id"):
+            root.after_cancel(root.after_id)
+        # Esperar 300ms tras el último carácter antes de buscar
+        root.after_id = root.after(300, simular_enter)
+
+entry_codigo.bind("<KeyRelease>", on_codigo_input)
+
 # RESULTADOS
 frame_resultado = tk.Frame(root, bg=COLOR_BLANCO, bd=2, relief="groove")
 frame_resultado.pack(padx=40, pady=20, fill=tk.X, expand=True)
