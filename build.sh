@@ -20,4 +20,5 @@ pyinstaller --onefile --noconsole \
   --add-data "lupa.png:." \
   index.py
 
+
 echo "✅ Ejecutable creado en: dist/app"

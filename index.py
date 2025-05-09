@@ -8,9 +8,9 @@ from datetime import datetime
 def resource_path(relative_path):
     """Obtiene el path absoluto incluso cuando se usa PyInstaller"""
     try:
-        base_path = sys._MEIPASS
+        base_path = sys._MEIPASS  # Directorio temporal cuando el archivo es un ejecutable
     except Exception:
-        base_path = os.path.abspath(".")
+        base_path = os.path.abspath(".")  # Ruta estándar si no es un ejecutable
 
     return os.path.join(base_path, relative_path)
 
