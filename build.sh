@@ -18,6 +18,6 @@ echo "📦 Generando ejecutable..."
 pyinstaller --onefile --noconsole \
   --add-data "logo.png:." \
   --add-data "lupa.png:." \
-  app.py
+  index.py
 
 echo "✅ Ejecutable creado en: dist/app"
