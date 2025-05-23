@@ -117,7 +117,7 @@ def on_codigo_input(event):
         # Esperar 300ms tras el último carácter antes de buscar
         root.after_id = root.after(300, simular_enter)
 
-entry_codigo.bind("<KeyRelease>", on_codigo_input)
+# entry_codigo.bind("<KeyRelease>", on_codigo_input)
 
 # RESULTADOS
 frame_resultado = tk.Frame(root, bg=COLOR_BLANCO, bd=2, relief="groove")
